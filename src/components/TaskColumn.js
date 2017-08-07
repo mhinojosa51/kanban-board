@@ -8,7 +8,7 @@ class TaskColumn extends React.Component {
 	render(){
 		const styles = {
 			container : {
-				width: this.props.width,
+				width: `${this.props.width}px`,
 				minHeight: '100%',
 				height: 'auto',
 				border: '1px solid #ff6600',
@@ -24,9 +24,11 @@ class TaskColumn extends React.Component {
 
 		return (
 			<div style={styles.container}>
-				<h3></h3>
+				<h3 style={styles.header}>{this.props.title}</h3>
 				{this.props.children}
 			</div>
 		)
 	}
 }
+
+export default TaskColumn;
