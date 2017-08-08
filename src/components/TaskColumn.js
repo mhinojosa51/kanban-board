@@ -9,6 +9,7 @@ class TaskColumn extends React.Component {
 		const styles = {
 			container : {
 				width: `${this.props.width}px`,
+				minWidth: '300px',
 				minHeight: '100%',
 				height: 'auto',
 				border: '1px solid #ff6600',

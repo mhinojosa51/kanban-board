@@ -13,13 +13,10 @@ const styles = {
 class DashBoard extends React.Component {
 	constructor(props){
 		super(props);
-		this.columnWidth = 0;
-	}
-
-	componentDidMount(){
 	}
 
 	render(){
+
 		const columnWidth = Math.floor(window.innerWidth / this.props.columns.length);
 		const columns = this.props.columns.map((column,i) => {
 			return <TaskColumn title={column} width={columnWidth} key={i}>
