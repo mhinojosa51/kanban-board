@@ -1,32 +1,30 @@
 import React from 'react';
+import Description from './TaskSubComponents/Description';
+import IconButton from 'material-ui/IconButton';
 
 const styles = {
 	container : {
 		width: '98%',
 		height: 'auto',
-		minHeight: '200px',
+		minHeight: '30px',
 		border: '1px solid black',
 		margin: '0 auto 0 auto',
 	},
 	header : {
 		color: 'blue',
 		fontSize: '24px',
-		paddingBottom: '10px',
 		textAlign: 'center',
-		borderBottom: '1px solid black',
 	},
 	description : {
 		width: '100%',
 	}
 }
 
-let TaskContainer = ({title,description,phase}) => {
+let TaskContainer = ({title,description,phase,opened}) => {
 	return (
 		<div style={styles.container}>
 			<h3 style={styles.header}>{title}</h3>
-			<section style={styles.description}>
-				{description}
-			</section>
+			{opened && <Description description={description} />}
 		</div>
 	)
 }
