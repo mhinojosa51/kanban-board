@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskColumn from './TaskColumn';
-import TaskContainer from './TaskContainer';
+import Task from './Task';
 
 const styles = {
 	container : {
@@ -21,7 +21,7 @@ class DashBoard extends React.Component {
 		const columnWidth = Math.floor(window.innerWidth / this.props.columns.length);
 		const columns = this.props.columns.map((column,i) => {
 			return <TaskColumn title={column} width={columnWidth} key={i}>
-				<TaskContainer title="Super Awesome New Feature" description="New feature that everyone will love" />
+				<Task title="Super Awesome Feature" description="New feature to wow our users!" />
 			</TaskColumn>
 		})
 		return (
