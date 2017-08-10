@@ -31,7 +31,7 @@ let Description = ({description}) => {
 				<h4 style={styles.header}>Description</h4>
 			</section>
 			<section style={styles.description}>
-				<textarea style={styles.textArea}>{description}</textarea>
+				<textarea style={styles.textArea} value={description}></textarea>
 			</section>
 		</section>
 	)
