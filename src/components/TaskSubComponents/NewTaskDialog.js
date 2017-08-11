@@ -29,21 +29,54 @@ const styles = {
 class NewTaskDialog extends React.Component {
 	constructor(props){
 		super(props);
+
+		this.state = {
+			title : '',
+			description: '',
+		}
+
+		this.handleTitleUpdate = this.handleTitleUpdate.bind(this);
+		this.handleDescriptionUpdate = this.handleDescriptionUpdate.bind(this);
+		this.handleSave = this.handleSave.bind(this);
+	}
+
+	handleTitleUpdate(e){
+		this.setState({
+			title : e.target.value,
+		}, function(){
+			console.log(this.state);
+		})
+	}
+
+	handleDescriptionUpdate(e){
+		this.setState({
+			description : e.target.value,
+		}, function(){
+			console.log(this.state);
+		})
+	}
+
+	handleSave(){
+		let title = this.state.title;
+		let description = this.state.description;
+
+		this.props.handleTaskSave(title,description);
+		this.props.handleClose();
 	}
 
 	render(){
 
 		const actions = [
 			<RaisedButton label="Cancel" style={styles.button} onClick={this.props.handleClose} primary={true} />,
-			<RaisedButton label="Save" primary={true} />
+			<RaisedButton label="Save" primary={true} onClick={this.handleSave}/>
 		];
 
 		return (
 			<Dialog open={this.props.opened} onRequestClose={this.props.handleClose} modal={false} actions={actions}>
 				<div style={styles.container}>
 					<h2 style={styles.header}>Create New Task</h2>
-					<TextField floatingLabelText="Title" style={styles.inputStyle} />
-					<TextField floatingLabelText="Task Description" style={styles.inputStyle} multiLine={true}/>
+					<TextField floatingLabelText="Title" style={styles.inputStyle} onChange={this.handleTitleUpdate}/>
+					<TextField floatingLabelText="Task Description" style={styles.inputStyle} onChange={this.handleDescriptionUpdate} multiLine={true}/>
 				</div>
 			</Dialog>
 		)

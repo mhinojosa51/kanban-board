@@ -2,15 +2,19 @@ import React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import NewTaskDialog from './TaskSubComponents/NewTaskDialog';
+import Task from './Task';
 
 class TaskColumn extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			addNew : false,
+			tasks: React.Children.toArray(this.props.children),
 		}
 
 		this.handleTaskDialog = this.handleTaskDialog.bind(this);
+		this.handleTaskSave = this.handleTaskSave.bind(this);
+		this.addNewTask = this.addNewTask.bind(this);
 	}
 
 	handleTaskDialog(){
@@ -18,6 +22,20 @@ class TaskColumn extends React.Component {
 
 		this.setState({
 			addNew : open,
+		})
+	}
+
+	handleTaskSave(title,description){
+		var task = <Task title={title} key={title} description={description} />;
+		this.addNewTask(task);
+	}
+
+	addNewTask(task){
+		let tasks = this.state.tasks;
+		tasks.push(task);
+
+		this.setState({
+			tasks,
 		})
 	}
 
@@ -45,13 +63,16 @@ class TaskColumn extends React.Component {
 		return (
 			<div style={styles.container}>
 				<h3 style={styles.header}>{this.props.title}</h3>
-				{this.props.children}
+				{this.state.tasks}
 				<section style={styles.addTask}>
 					<FloatingActionButton mini={true}>
 						<ContentAdd onClick={this.handleTaskDialog}/>
 					</FloatingActionButton>
 				</section>
-				{this.state.addNew && <NewTaskDialog opened={this.state.addNew} handleClose={this.handleTaskDialog}/>}
+				{this.state.addNew &&
+					<NewTaskDialog opened={this.state.addNew}
+						handleClose={this.handleTaskDialog}
+						handleTaskSave={this.handleTaskSave}/>}
 			</div>
 		)
 	}

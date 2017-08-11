@@ -11,13 +11,20 @@ class Task extends React.Component {
 			opened: false,
 			stage: this.props.stage || '',
 		}
+
 	}
 
 	render(){
 		return (
-			<TaskContainer title={this.state.title} description={this.state.description} opened={true}/>
+			<TaskContainer title={this.state.title}
+				description={this.state.description}
+				opened={true} />
 		)
 	}
+}
+
+Task.defaultProps = {
+	stage : 'todo',
 }
 
 export default Task;
