@@ -26,7 +26,7 @@ class TaskColumn extends React.Component {
 	}
 
 	handleTaskSave(title,description){
-		var task = <Task title={title} key={title} description={description} />;
+		var task = <Task title={title} key={title} description={description} taskWidth={this.props.taskWidth}/>;
 		this.addNewTask(task);
 	}
 
@@ -50,6 +50,12 @@ class TaskColumn extends React.Component {
 				display: 'flex',
 				flexDirection: 'column',
 			},
+			tasks : {
+				width: `${this.props.width}px`,
+				minWidth: '300px',
+				display: 'flex',
+				flexWrap: 'wrap',
+			},
 			header : {
 				color: '#ff6600',
 				fontSize: '20px',
@@ -63,12 +69,16 @@ class TaskColumn extends React.Component {
 		return (
 			<div style={styles.container}>
 				<h3 style={styles.header}>{this.props.title}</h3>
-				{this.state.tasks}
-				<section style={styles.addTask}>
+				<section style={styles.tasks}>
+					<Task title="Words" desscription="Hello" opened={false} taskWidth={this.props.taskWidth}/>
+						<Task title="Words" desscription="Hello" opened={false} taskWidth={this.props.taskWidth}/>
+					{this.state.tasks}
+				</section>
+				{this.props.addTask && <section style={styles.addTask}>
 					<FloatingActionButton mini={true}>
 						<ContentAdd onClick={this.handleTaskDialog}/>
 					</FloatingActionButton>
-				</section>
+				</section>}
 				{this.state.addNew &&
 					<NewTaskDialog opened={this.state.addNew}
 						handleClose={this.handleTaskDialog}
