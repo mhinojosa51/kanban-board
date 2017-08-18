@@ -1,6 +1,5 @@
 import React from 'react';
 import TaskColumn from './TaskColumn';
-import Task from './Task';
 
 const styles = {
 	container : {
@@ -12,16 +11,16 @@ const styles = {
 }
 
 class DashBoard extends React.Component {
-	constructor(props){
-		super(props);
-	}
 
 	render(){
 
 		const columnWidth = Math.floor(window.innerWidth / this.props.columns.length);
+		const taskWidth = Math.round(columnWidth / 2);
 		const columns = this.props.columns.map((column,i) => {
-			return <TaskColumn title={column} width={columnWidth} key={i}>
-				<Task title="Super Awesome Feature" description="New feature to wow our users!" />
+			return <TaskColumn title={column}
+				width={columnWidth} key={i}
+				addTask={column === 'ToDo' ? true : false}
+				taskWidth={taskWidth}>
 			</TaskColumn>
 		})
 		return (
@@ -33,7 +32,7 @@ class DashBoard extends React.Component {
 }
 
 DashBoard.defaultProps = {
-	columns : ['ToDo', 'Start', 'Finishing', 'Finished'],
+	columns : ['ToDo', 'Working', 'Finished'],
 }
 
 export default DashBoard;

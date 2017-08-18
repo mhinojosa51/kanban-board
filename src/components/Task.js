@@ -12,13 +12,24 @@ class Task extends React.Component {
 			stage: this.props.stage || '',
 		}
 
+		this.openTask = this.openTask.bind(this);
+
+	}
+
+	openTask(){
+		this.setState({
+			opened : !this.state.opened,
+		})
 	}
 
 	render(){
 		return (
 			<TaskContainer title={this.state.title}
 				description={this.state.description}
-				opened={true} />
+				opened={this.state.opened}
+				handleTaskOpen={this.openTask}
+				taskWidth={this.props.taskWidth}
+				/>
 		)
 	}
 }

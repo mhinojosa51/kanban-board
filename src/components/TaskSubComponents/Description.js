@@ -1,12 +1,12 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
 
 const styles = {
 	container : {
-		width: '100%',
+		width: '95%',
 		height: 'auto',
 		display: 'flex',
-		border: '1px solid black',
+		justifyContent: 'space-between',
+		margin: '0px auto 0px auto',
 	},
 	header : {
 		padding: '0',
@@ -15,11 +15,11 @@ const styles = {
 	description : {
 		width: '80%',
 		textAlign: 'left',
-		marginLeft: '5px',
+		marginLeft: '50px',
 	},
 	textArea: {
-		width: "98%",
-		maxWidth: '98%',
+		width: "80%",
+		maxWidth: '90%',
 		maxHeight: '200px',
 	}
 }
