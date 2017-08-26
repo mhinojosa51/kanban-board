@@ -1,6 +1,6 @@
 import React from 'react';
 import Description from './TaskSubComponents/Description';
-import Pointing from './TaskSubComponents/Pointing';
+//import Pointing from './TaskSubComponents/Pointing';
 
 const styles = {
 	container : {
@@ -30,7 +30,7 @@ let TaskContainer = ({title,description,phase,opened, handleTaskOpen, taskWidth}
 
 	const container = {
 		...styles.container,
-		width: taskWidth - 5,
+		width: taskWidth - 20,
 	}
 	return (
 		<div style={container} >
@@ -40,7 +40,6 @@ let TaskContainer = ({title,description,phase,opened, handleTaskOpen, taskWidth}
 			{opened &&
 				<section>
 					<Description description={description} />
-					<Pointing />
 				</section>
 			}
 		</div>

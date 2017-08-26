@@ -19,6 +19,8 @@ class Task extends React.Component {
 	openTask(){
 		this.setState({
 			opened : !this.state.opened,
+		}, function(){
+			console.log('true')
 		})
 	}
 

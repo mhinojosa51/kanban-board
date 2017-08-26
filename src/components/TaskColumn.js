@@ -26,7 +26,7 @@ class TaskColumn extends React.Component {
 	}
 
 	handleTaskSave(title,description){
-		var task = <Task title={title} key={title} description={description} taskWidth={this.props.taskWidth}/>;
+		var task = <Task title={title} key={title} description={description} taskWidth={this.props.width}/>;
 		this.addNewTask(task);
 	}
 
@@ -50,12 +50,6 @@ class TaskColumn extends React.Component {
 				display: 'flex',
 				flexDirection: 'column',
 			},
-			tasks : {
-				width: `${this.props.width}px`,
-				minWidth: '300px',
-				display: 'flex',
-				flexWrap: 'wrap',
-			},
 			header : {
 				color: '#ff6600',
 				fontSize: '20px',
@@ -70,8 +64,8 @@ class TaskColumn extends React.Component {
 			<div style={styles.container}>
 				<h3 style={styles.header}>{this.props.title}</h3>
 				<section style={styles.tasks}>
-					<Task title="Words" desscription="Hello" opened={false} taskWidth={this.props.taskWidth}/>
-						<Task title="Words" desscription="Hello" opened={false} taskWidth={this.props.taskWidth}/>
+					<Task title="Words" desscription="Hello" opened={false} taskWidth={this.props.width}/>
+						<Task title="Words" desscription="Hello" opened={false} taskWidth={this.props.width}/>
 					{this.state.tasks}
 				</section>
 				{this.props.addTask && <section style={styles.addTask}>
